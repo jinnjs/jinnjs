@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "git-hooks": "./git/hooks.sh",
-    "jshint": "jshint ./src && jshint ./test",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "jshint": "jshint --config ./.jshintrc ./src && jshint --config ./.jshintrc ./test",
+    "test": "mocha --recursive ./test"
   },
   "author": "Dmitry <balakovd@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "jshint": "^2.9.2"
+    "jshint": "^2.9.2",
+    "mocha": "^2.4.5"
   }
 }
