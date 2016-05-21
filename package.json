@@ -2,6 +2,7 @@
   "name": "jinnjs",
   "version": "0.1.0",
   "description": "JinnJS - for your desires",
+  "repository": "jinnjs/jinnjs",
   "main": "index.js",
   "scripts": {
     "git-hooks": "./git/hooks.sh",
@@ -9,7 +10,7 @@
     "test": "mocha --recursive ./test"
   },
   "author": "Dmitry <balakovd@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "jshint": "^2.9.2",
     "mocha": "^2.4.5"
