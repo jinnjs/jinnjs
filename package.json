@@ -2,10 +2,17 @@
   "name": "jinnjs",
   "version": "0.1.0",
   "description": "JinnJS - for your desires",
+  "repository": "jinnjs/jinnjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "git-hooks": "./git/hooks.sh",
+    "jshint": "jshint --config ./.jshintrc ./src && jshint --config ./.jshintrc ./test",
+    "test": "mocha --recursive ./test"
   },
   "author": "Dmitry <balakovd@gmail.com>",
-  "license": "ISC"
+  "license": "MIT",
+  "devDependencies": {
+    "jshint": "^2.9.2",
+    "mocha": "^2.4.5"
+  }
 }
