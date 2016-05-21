@@ -4,6 +4,8 @@
   "description": "JinnJS - for your desires",
   "main": "index.js",
   "scripts": {
+    "git-hooks":"./git/hooks.sh",
+    "jshint":"jshint ./src && jshint ./test",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Dmitry <balakovd@gmail.com>",
