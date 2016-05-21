@@ -1,3 +1,5 @@
+* Tasks (registration & prefix & execute)
+* Add documentation
 * Add tests
 ```
 npm test
