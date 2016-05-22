@@ -1,5 +1,9 @@
 var Tasks = require('./tasks');
 
+/**
+ * JinnJS
+ * @module JinnJS
+ */
 module.exports = JinnJS;
 
 /**

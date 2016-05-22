@@ -7,7 +7,7 @@
   "scripts": {
     "git-hooks": "./git/hooks.sh",
     "jshint": "jshint --config .jshintrc src && jshint --config .jshintrc test",
-    "doc": "jsdoc2md src/*.js > doc.md",
+    "doc": "jsdoc2md \"src/**/*.js\" > doc.md",
     "test": "NODE_PATH=src mocha --recursive ./test"
   },
   "author": "Dmitry <balakovd@gmail.com>",
