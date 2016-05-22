@@ -23,12 +23,18 @@ function Tasks(jinn) {
  * @param {string} name - task name
  * @param {object} env - environment
  */
-Tasks.prototype.execute = function(name, env) {
+Tasks.prototype.execute = function(name, env, args) {
     var task = this.get(name);
-    return Promise.resolve().then(function applyServices() {
+    return Promise.resolve()
+        .then(applyServices.bind(this))
+        .then(runTask.bind(this));
+
+    function applyServices() {
         if (!task.services) { return; }
         return this._jinn.services.applyServices(task.services, env);
-    }.bind(this)).then(function runTask() {
-        return task(env);
-    }.bind(this));
+    }
+
+    function runTask() {
+        return task(env, args);
+    }
 };
