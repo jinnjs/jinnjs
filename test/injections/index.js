@@ -3,7 +3,7 @@ var sinon = require('sinon');
 
 var injections = require('injections');
 
-var files = [ 'add', 'addAll', 'addOne', 'prefix', 'get' ];
+var files = [ 'add', 'addAll', 'addOne', 'prefix', 'get', 'require' ];
 
 var methods = {};
 var tests = [];
