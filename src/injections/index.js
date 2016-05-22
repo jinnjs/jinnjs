@@ -3,6 +3,7 @@ var addOne = require('./addOne');
 var addAll = require('./addAll');
 var prefix = require('./prefix');
 var getInjection = require('./get');
+var injectionsRequire = require('./require');
 
 module.exports = Injections;
 
@@ -88,6 +89,16 @@ function Injections(obj) {
      * var inj = obj.get('model:method1');
      */
     obj.get = getInjection.bind(obj);
+
+    /**
+     * Require
+     * @func require
+     * @alias Injections/require
+     * @param {string} name - injection name
+     * @param {string} requireKey - injection require key
+     * @returns {array} injections array
+     */
+    obj.require = injectionsRequire.bind(obj);
 
     return obj;
 }

@@ -13,15 +13,19 @@ describe('Tasks', function () {
     });
 
     it('execute', function(done) {
+        var jinn = { services : { applyServices : sinon.spy() } };
         var env = {};
-        var tasks = new Tasks({});
+        var tasks = new Tasks(jinn);
         var injection = sinon.stub().returns('task result');
+        injection.services = 's1,s2';
         tasks.add('injection', injection);
 
         tasks.execute('injection', env).then(function(result) {
             assert.equal(result, 'task result', 'Valid result');
             assert.ok(injection.calledOnce, 'injection was called');
             assert.ok(injection.calledWith(env), 'injection was called with valid arguments');
+            assert.ok(jinn.services.applyServices.calledOnce, 'jinn.services.applyServices was called');
+            assert.ok(jinn.services.applyServices.calledWith('s1,s2'), 'jinn.services.applyServices was called with valid arguments');
 
             done();
         }).catch(function(e) {

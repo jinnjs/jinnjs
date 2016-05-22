@@ -5,7 +5,10 @@ function getInjection(name) {
     if (name === '') { throw new Error('Name is not defined'); }
 
     var injection = this._injections[name];
-    if (injection == null) { throw new Error('Injection "' + name + '" not found'); }
+    if (injection == null) {
+        if (this.getInternal) { return this.getInternal(name); }
+        throw new Error('Injection "' + name + '" not found');
+    }
     if ((typeof injection) !== 'function') { throw new Error('Injection "' + name + '" is not function'); }
 
     return injection;
