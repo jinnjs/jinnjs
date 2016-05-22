@@ -11,5 +11,5 @@ module.exports = JinnJS;
  * @constructor
  */
 function JinnJS() {
-    this.tasks = new Tasks();
+    this.tasks = new Tasks(this);
 }

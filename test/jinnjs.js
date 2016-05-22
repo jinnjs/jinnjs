@@ -8,5 +8,6 @@ describe('JinnJS', function () {
         var jinn = new JinnJS();
 
         assert.ok(jinn.tasks instanceof Tasks, 'jinn.tasks');
+        assert.equal(jinn.tasks._jinn, jinn, 'jinn.tasks._jinn');
     });
 });
