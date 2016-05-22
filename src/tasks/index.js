@@ -1,4 +1,4 @@
-var injections = require('./injections');
+var injections = require('../injections');
 
 /**
  * Use module 
