@@ -10,7 +10,7 @@ var Injections = require('../injections');
 class Tasks extends Injections {
     /**
      * Tasks.
-     * @param {JinnJS} jinn - JinnJS
+     * @param {Jinn} jinn - Jinn
      * @constructor Tasks
      */
     constructor(jinn) {
@@ -24,6 +24,7 @@ class Tasks extends Injections {
      * @func execute
      * @param {string} name - task name
      * @param {object} env - environment
+     * @return {TaskResult} result - result
      */
     execute(name, env, args) {
         var task = this.get(name);
@@ -34,12 +35,12 @@ class Tasks extends Injections {
         };
 
         var runTask = ()=> {
-            return task(env, args);
+            return task.call(env, args);
         };
 
         return Promise.resolve()
-            .then(applyServices.bind(this))
-            .then(runTask.bind(this));
+            .then(applyServices)
+            .then(runTask);
     }
 }
 

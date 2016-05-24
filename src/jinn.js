@@ -4,13 +4,13 @@ var Tasks = require('./tasks');
 var Services = require('./services');
 
 /**
- * JinnJS
- * @module JinnJS
+ * Jinn
+ * @module Jinn
  */
-class JinnJS {
+class Jinn {
     /**
-     * JinnJS.
-     * @constructor
+     * Jinn.
+     * @constructor Jinn
      */
     constructor() {
         this.tasks = new Tasks(this);
@@ -18,4 +18,4 @@ class JinnJS {
     }
 }
 
-module.exports = JinnJS;
+module.exports = Jinn;

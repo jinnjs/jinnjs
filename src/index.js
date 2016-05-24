@@ -1,3 +1,3 @@
-var JinnJS = require('./jinnjs');
+var Jinn = require('./jinn');
 
-module.exports = new JinnJS();
+module.exports = new Jinn();

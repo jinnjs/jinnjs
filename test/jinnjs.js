@@ -1,12 +1,12 @@
 var assert = require('chai').assert;
 
-var JinnJS = require('jinnjs');
+var Jinn = require('jinn');
 var Tasks = require('tasks');
 var Services = require('services');
 
-describe('JinnJS', ()=> {
+describe('Jinn', ()=> {
     it('constructor', ()=> {
-        var jinn = new JinnJS();
+        var jinn = new Jinn();
 
         assert.ok(jinn.tasks instanceof Tasks, 'jinn.tasks');
         assert.ok(jinn.services instanceof Services, 'jinn.services');
