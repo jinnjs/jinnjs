@@ -4,8 +4,8 @@ var JinnJS = require('jinnjs');
 var Tasks = require('tasks');
 var Services = require('services');
 
-describe('JinnJS', function () {
-    it('constructor', function() {
+describe('JinnJS', ()=> {
+    it('constructor', ()=> {
         var jinn = new JinnJS();
 
         assert.ok(jinn.tasks instanceof Tasks, 'jinn.tasks');

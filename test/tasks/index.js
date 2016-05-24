@@ -3,8 +3,8 @@ var sinon = require('sinon');
 
 var Tasks = require('tasks');
 
-describe('Tasks', function () {
-    it('constructor', function() {
+describe('Tasks', ()=> {
+    it('constructor', ()=> {
         var jinn = {};
         var tasks = new Tasks(jinn);
 
@@ -12,7 +12,7 @@ describe('Tasks', function () {
         assert.isDefined(tasks._injections, 'Injections');
     });
 
-    it('execute', function(done) {
+    it('execute', (done)=> {
         var jinn = { services : { applyServices : sinon.spy() } };
         var env = {};
         var args = {};
@@ -21,7 +21,7 @@ describe('Tasks', function () {
         injection.services = 's1,s2';
         tasks.add('injection', injection);
 
-        tasks.execute('injection', env, args).then(function(result) {
+        tasks.execute('injection', env, args).then((result)=> {
             assert.equal(result, 'task result', 'Valid result');
             assert.ok(injection.calledOnce, 'injection was called');
             assert.ok(injection.calledWith(env, args), 'injection was called with valid arguments');
@@ -29,7 +29,7 @@ describe('Tasks', function () {
             assert.ok(jinn.services.applyServices.calledWith('s1,s2'), 'jinn.services.applyServices was called with valid arguments');
 
             done();
-        }).catch(function(e) {
+        }).catch((e)=> {
             done(e);
         });
     });

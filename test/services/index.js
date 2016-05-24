@@ -3,8 +3,8 @@ var sinon = require('sinon');
 
 var Services = require('services');
 
-describe('Services', function () {
-    it('constructor', function() {
+describe('Services', ()=> {
+    it('constructor', ()=> {
         var jinn = {};
         var services = new Services(jinn);
 
@@ -12,7 +12,7 @@ describe('Services', function () {
         assert.isDefined(services._injections, 'Injections');
     });
 
-    it('applyServices', function(done) {
+    it('applyServices', (done)=> {
         var jinn = {};
         var env = {};
         var injections = {
@@ -23,11 +23,11 @@ describe('Services', function () {
         var services = new Services(jinn);
         services.add(injections);
 
-        Promise.resolve().then(function() {
+        Promise.resolve().then(()=> {
             return services.applyServices('model2,model3', env);
-        }).then(function() {
+        }).then(()=> {
             return services.applyServices('model2', env);
-        }).then(function() {
+        }).then(()=> {
             assert.ok(injections.model.calledOnce, 'injection was called');
             assert.ok(injections.model.calledWith(env), 'injection was called with valid arguments');
             assert.ok(injections.model2.calledOnce, 'injection was called');
@@ -36,25 +36,25 @@ describe('Services', function () {
             assert.ok(injections.model3.calledWith(env), 'injection was called with valid arguments');
 
             done();
-        }).catch(function(e) {
+        }).catch((e)=> {
             done(e);
         });
     });
 
-    it('getInternal', function() {
+    it('getInternal', ()=> {
         var env = {};
         var services = new Services({});
 
         services.get('fs')(env);
 
         assert.equal(env.fs, require('fs'), 'Valid require');
-        assert.throws(function() { services.get('sndh38dj32')(env); }, 'Injection "sndh38dj32" not found');
+        assert.throws(()=> { services.get('sndh38dj32')(env); }, 'Injection "sndh38dj32" not found');
     });
 
-    function createInjection(services) {
+    var createInjection = (services)=> {
         var result = sinon.stub();
         result.services = services;
 
         return result;
-    }
+    };
 });
