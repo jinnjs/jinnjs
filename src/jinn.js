@@ -26,7 +26,7 @@ class Jinn {
      * @param {string} description -  task description
      * @return {Promise} promise - promise
      */
-    execute(description) {
+    execute() {
 
     }
 
