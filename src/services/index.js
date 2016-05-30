@@ -7,10 +7,12 @@ var Injections = require('../injections');
  * @module Services
  * @extends Injections
  */
+
+/** Class representing a Services. */
 class Services extends Injections {
     /**
      * Services.
-     * @param {JinnJS} jinn - JinnJS
+     * @param {Jinn} jinn - Jinn
      * @constructor Services
      */
     constructor(jinn) {
