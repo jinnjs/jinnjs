@@ -7,6 +7,8 @@ var Injections = require('../injections');
  * @module Services
  * @extends Injections
  */
+
+/** Class representing a Services. */
 class Services extends Injections {
     /**
      * Services.

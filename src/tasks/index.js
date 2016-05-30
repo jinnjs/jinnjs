@@ -7,6 +7,8 @@ var Injections = require('../injections');
  * @module Tasks
  * @extends Injections
  */
+
+/** Class representing a Tasks. */
 class Tasks extends Injections {
     /**
      * Tasks.
@@ -24,7 +26,7 @@ class Tasks extends Injections {
      * @func execute
      * @param {string} name - task name
      * @param {object} env - environment
-     * @return {TaskResult} result - result
+     * @return {Promise} promise - promise
      */
     execute(name, env, args) {
         var task = this.get(name);

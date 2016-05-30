@@ -7,6 +7,7 @@ var Services = require('./services');
  * Jinn
  * @module Jinn
  */
+/** Class representing a Jinn. */
 class Jinn {
     /**
      * Jinn.

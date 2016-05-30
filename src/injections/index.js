@@ -8,7 +8,10 @@
  * Injections(obj);
  * obj.add('component:method', method);
  */
+
+/** Class representing a Injections. */
 class Injections {
+    
     constructor() {
         this._injections = {};
     }

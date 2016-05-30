@@ -2,19 +2,38 @@
 
 var TaskResult = require('./task-result');
 
+/** Class representing a TaskResults. */
 class TaskResults {
-    constructor(env) {
-        this.env = env;
+    /**
+     * TaskResults.
+     * @param {Environment} environment - environment
+     * @constructor TaskResults
+     */
+    constructor(environment) {
+        this.environment = environment;
 
         this._items = [];
         this.last = null;
     }
 
-    push(name, args, result) {
-        var taskResult = new TaskResult(name, this.env, args, result);
-        this._items.push(taskResult);
+    /**
+     * Add task result
+     * @func push
+     * @alias TaskResults/push
+     * @param {string} taskName - task name
+     * @param {string} taskResultName - task result name
+     * @param {Object} args - arguments
+     * @param {Object} result - result
+     * @returns {Object} taskResult - task result
+     */
+    push(taskName, taskResultName, args, result) {
+        var result = new TaskResult(taskName, taskResultName, this.environment, args, result);
+        this._items.push(result);
 
-        this.last = taskResult;
+        this[taskResultName] = result;
+        this.last = result;
+
+        return result;
     }
 }
 

@@ -9,7 +9,7 @@ describe('TaskResults', ()=> {
 
         var results = new TaskResults(env);
 
-        assert.equal(results.env, env, 'results.env');
+        assert.equal(results.environment, env, 'results.env');
         assert.deepEqual(results._items, [], 'results._items');
         assert.isNull(results.last, 't-args', 'results.last');
     });
@@ -20,9 +20,12 @@ describe('TaskResults', ()=> {
         var result = {};
         var results = new TaskResults(env);
 
-        results.push('tn', args, result);
+        var tResult = results.push('tn', 'tr', args, result);
 
-        assert.deepEqual(results._items, [ new TaskResult('tn', env, args, result) ], 'results._items');
+        var taskResult = new TaskResult('tn', 'tr', env, args, result);
+        assert.deepEqual(tResult, taskResult, 'result');
+        assert.deepEqual(results.tr, taskResult, 'result.taskName');
+        assert.deepEqual(results._items, [ taskResult ], 'results._items');
         assert.equal(results.last, results._items[0], 'results.last');
     });
 });
