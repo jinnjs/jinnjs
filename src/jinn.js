@@ -57,7 +57,7 @@ class Jinn {
                         state.key = key.substr(1);
                         return;
                     }
-                    break;
+                    throw new Error('Input ("' + key + '") is not postprocessor (--), or argument (-)');
 
                 case 'args':
                 case 'postprocessors':
@@ -65,6 +65,7 @@ class Jinn {
                     state.type = 'none';
                     return;
             }
+            throw new Error('Invalid input ("' + key + '"), state=' + JSON.stringify(state));
         });
         return result;
     }

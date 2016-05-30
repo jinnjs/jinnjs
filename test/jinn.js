@@ -21,12 +21,19 @@ describe('Jinn', ()=> {
 
     });
 
-    it('parse', ()=> {
+    it.only('parse', ()=> {
         var jinn = new Jinn();
 
         assert.deepEqual(
             jinn.parse('t:task -a1 file -a22s sdd --name ResultName'),
             { task : 't:task', args: { a1: 'file', a22s : 'sdd' }, postprocessors : { name : 'ResultName' } },
-            'Parse result without "');  
+            'Parse result without "');
+        assert.deepEqual(
+            jinn.parse('t:task "-a1 a" file -a22s "sdd  ehwqeb qw k kqw" --name ResultName'),
+            { task : 't:task', args: { 'a1 a': 'file', a22s : 'sdd  ehwqeb qw k kqw' }, postprocessors : { name : 'ResultName' } },
+            'Parse result with "');
+        assert.throws(()=>{
+            jinn.parse('t:task file');
+        }, 'Input ("file") is not postprocessor (--), or argument (-)');
     });
 });
