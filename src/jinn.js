@@ -73,6 +73,6 @@ class Jinn {
     }
 }
 
-const SEPARATOR = ' ';
+const SEPARATOR = /[^" ]+|("[^"]*")/g;
 
 module.exports = Jinn;

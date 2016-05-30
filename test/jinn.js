@@ -41,7 +41,7 @@ describe('Jinn', ()=> {
             'jinn.environment.execute was called with valid arguments');
     });
 
-    it('parse', ()=> {
+    it.only('parse', ()=> {
         var jinn = new Jinn();
 
         assert.deepEqual(

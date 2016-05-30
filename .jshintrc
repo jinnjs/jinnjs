@@ -60,11 +60,9 @@
   "latedef": false,
 
   "globals": {
-    "DocDocApi": false,
     "assert": false,
     "sinon":false,
     "describe":false,
-    "it":false,
-    "ClientApp":false
+    "it":false
   }
 }
