@@ -18,7 +18,7 @@ describe('Jinn', ()=> {
         assert.equal(jinn.services._jinn, jinn, 'jinn.services._jinn');
     });
 
-    it.only('execute', ()=> {
+    it('execute', ()=> {
         var jinn = new Jinn();
         var parsed = { task : 'task', args : { a : 12 }, postprocessors: { 'result-name': 't-name' } };
         sinon.stub(jinn, 'parse').returns(parsed);

@@ -41,6 +41,7 @@ class Jinn {
         var result = { args : {}, postprocessors : {} };
         var state = { type : 'task' };
         description.split(SEPARATOR).forEach((key)=> {
+            key = key.replace('"', '');
             switch(state.type) {
                 case 'task':
                     result.task = key;
