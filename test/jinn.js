@@ -21,7 +21,7 @@ describe('Jinn', ()=> {
 
     });
 
-    it.only('parse', ()=> {
+    it('parse', ()=> {
         var jinn = new Jinn();
 
         assert.deepEqual(
