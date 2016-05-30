@@ -26,8 +26,9 @@ class Jinn {
      * @param {string} description -  task description
      * @return {Promise} promise - promise
      */
-    execute() {
-
+    execute(description) {
+        description = this.parse(description);
+        return this.environment.execute(description.task, description.postprocessors['result-name'], description.args);
     }
 
     /**

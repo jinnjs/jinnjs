@@ -21,10 +21,13 @@ describe('TaskResults', ()=> {
         var results = new TaskResults(env);
 
         var tResult = results.push('tn', 'tr', args, result);
+        results.push('tn', null, args, result);
 
         var taskResult = new TaskResult('tn', 'tr', env, args, result);
         assert.deepEqual(tResult, taskResult, 'result');
         assert.deepEqual(results.tr, taskResult, 'result.taskName');
+        assert.isUndefined(results.null, 'result.null');
+        assert.isUndefined(results.undefined, 'result.undefined');
         assert.deepEqual(results._items, [ taskResult ], 'results._items');
         assert.equal(results.last, results._items[0], 'results.last');
     });
