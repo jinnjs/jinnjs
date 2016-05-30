@@ -2,6 +2,7 @@
 
 var Tasks = require('./tasks');
 var Services = require('./services');
+var Environment = require('./environment');
 
 /**
  * Jinn
@@ -16,6 +17,7 @@ class Jinn {
     constructor() {
         this.tasks = new Tasks(this);
         this.services = new Services(this);
+        this.environment = new Environment(this);
     }
 }
 

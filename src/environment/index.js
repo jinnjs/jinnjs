@@ -19,7 +19,7 @@ class Environment {
 
     /**
      * Execute task
-     * @func push
+     * @func execute
      * @alias Environment/execute
      * @param {string} name - task name
      * @param {string} resultName - result name
@@ -27,7 +27,9 @@ class Environment {
      * @returns {Promise} promise - promise (resolve - taskResult)
      */
     execute(name, resultName, args) {
-        return this.jinn.tasks.execute(name, this, args).then((result)=>{ return this.results.push(name, resultName, args, result); });
+        return this.jinn.tasks.execute(name, this, args).then((result)=>{ 
+            return this.results.push(name, resultName, args, result); 
+        });
     }
 }
 
