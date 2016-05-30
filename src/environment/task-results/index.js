@@ -26,8 +26,8 @@ class TaskResults {
      * @param {Object} result - result
      * @returns {Object} taskResult - task result
      */
-    push(taskName, taskResultName, args, result) {
-        var result = new TaskResult(taskName, taskResultName, this.environment, args, result);
+    push(taskName, taskResultName, args, taskResult) {
+        var result = new TaskResult(taskName, taskResultName, this.environment, args, taskResult);
         this._items.push(result);
 
         this[taskResultName] = result;
