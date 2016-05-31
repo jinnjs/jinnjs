@@ -30,7 +30,7 @@ class TaskResults {
         var result = new TaskResult(taskName, taskResultName, this.environment, args, taskResult);
         this._items.push(result);
 
-        this[taskResultName] = result;
+        if (taskResultName) { this[taskResultName] = result; }
         this.last = result;
 
         return result;

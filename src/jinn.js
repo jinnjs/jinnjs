@@ -19,6 +19,57 @@ class Jinn {
         this.services = new Services(this);
         this.environment = new Environment(this);
     }
+
+    /**
+     * Execute task
+     * @func execute
+     * @param {Array} description -  task description
+     * @return {Promise} promise - promise
+     */
+    execute(description) {
+        description = this.parse(description);
+        return this.environment.execute(description.task, description.postprocessors['result-name'], description.args);
+    }
+
+    /**
+     * Parse task argv
+     * @func parse
+     * @param {Array} argv -  task argv
+     * @return {Object} - return description { task : String, args : Object, postprocessors : Object }
+     */
+    parse(argv) {
+        var result = { args : {}, postprocessors : {} };
+        var state = { type : 'task' };
+        argv.forEach((key)=> {
+            switch(state.type) {
+                case 'task':
+                    result.task = key;
+                    state.type = 'none';
+                    return;
+
+                case 'none':
+                    if (key.substr(0, 2) === '--') {
+                        state.type = 'postprocessors';
+                        state.key = key.substr(2);
+                        return;
+                    }
+                    if (key.substr(0, 1) === '-') {
+                        state.type = 'args';
+                        state.key = key.substr(1);
+                        return;
+                    }
+                    throw new Error('Input ("' + key + '") is not postprocessor (--), or argument (-)');
+
+                case 'args':
+                case 'postprocessors':
+                    result[state.type][state.key] = key;
+                    state.type = 'none';
+                    return;
+            }
+            throw new Error('Invalid input ("' + key + '"), state=' + JSON.stringify(state));
+        });
+        return result;
+    }
 }
 
 module.exports = Jinn;
