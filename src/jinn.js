@@ -23,7 +23,7 @@ class Jinn {
     /**
      * Execute task
      * @func execute
-     * @param {string} description -  task description
+     * @param {Array} description -  task description
      * @return {Promise} promise - promise
      */
     execute(description) {
@@ -32,16 +32,15 @@ class Jinn {
     }
 
     /**
-     * Execute task
+     * Parse task argv
      * @func parse
-     * @param {string} description -  task description
+     * @param {Array} argv -  task argv
      * @return {Object} - return description { task : String, args : Object, postprocessors : Object }
      */
-    parse(description) {
+    parse(argv) {
         var result = { args : {}, postprocessors : {} };
         var state = { type : 'task' };
-        description.split(SEPARATOR).forEach((key)=> {
-            key = key.replace('"', '');
+        argv.forEach((key)=> {
             switch(state.type) {
                 case 'task':
                     result.task = key;
@@ -72,7 +71,5 @@ class Jinn {
         return result;
     }
 }
-
-const SEPARATOR = /[^" ]+|("[^"]*")/g;
 
 module.exports = Jinn;
